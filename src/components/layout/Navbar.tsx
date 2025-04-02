@@ -32,8 +32,8 @@ const Navbar = () => {
   }, [location]);
 
   const navbarClass = scrolled
-    ? "bg-white/95 shadow-md backdrop-blur-md"
-    : "bg-transparent";
+    ? "bg-forest-800/95 shadow-lg backdrop-blur-md"
+    : "bg-forest-700/90 backdrop-blur-sm";
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -55,8 +55,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <span className="font-serif text-2xl font-bold text-forest-800">
-                Mycelium<span className="text-forest-600">Masters</span>
+              <span className="font-serif text-2xl font-bold text-white">
+                Mycelium<span className="text-accent">Masters</span>
               </span>
             </Link>
           </div>
@@ -68,14 +68,14 @@ const Navbar = () => {
                   to={item.path}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive(item.path)
-                      ? "text-forest-700 font-semibold"
-                      : "text-forest-600 hover:text-forest-800"
+                      ? "text-white bg-forest-600/70 font-semibold"
+                      : "text-gray-200 hover:text-white hover:bg-forest-600/50"
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="ml-4" asChild>
+              <Button variant="secondary" className="ml-4 bg-accent text-white hover:bg-accent/80" asChild>
                 <Link to="/contact">Get in Touch</Link>
               </Button>
             </div>
@@ -83,7 +83,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-forest-600 hover:text-forest-800 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-forest-600 focus:outline-none"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -101,7 +101,7 @@ const Navbar = () => {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } md:hidden bg-white shadow-lg`}
+        } md:hidden bg-forest-800 shadow-lg`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {navItems.map((item) => (
@@ -110,13 +110,16 @@ const Navbar = () => {
               to={item.path}
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 isActive(item.path)
-                  ? "text-forest-700 font-semibold"
-                  : "text-forest-600 hover:text-forest-800"
+                  ? "text-white bg-forest-600 font-semibold"
+                  : "text-gray-200 hover:text-white hover:bg-forest-600/50"
               }`}
             >
               {item.name}
             </Link>
           ))}
+          <Button variant="secondary" className="w-full mt-2 bg-accent text-white hover:bg-accent/80" asChild>
+            <Link to="/contact">Get in Touch</Link>
+          </Button>
         </div>
       </div>
     </nav>
