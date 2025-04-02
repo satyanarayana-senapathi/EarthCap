@@ -9,16 +9,16 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
         <div className="max-w-3xl mx-auto md:mx-0 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Premium Organic Mushroom Cultivation
+            Premium Button Mushroom Cultivation
           </h1>
           <p className="text-xl md:text-2xl opacity-90 mb-8 max-w-2xl leading-relaxed">
-            Sustainably grown gourmet and medicinal mushrooms,
-            cultivated with care for health, flavor, and the planet.
+            Sustainably grown, premium quality button mushrooms,
+            cultivated with care for exceptional flavor, nutrition, and freshness.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" asChild>
               <Link to="/products">
-                Explore Our Products
+                Explore Our Mushrooms
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
