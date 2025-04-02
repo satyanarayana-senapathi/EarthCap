@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -19,13 +20,35 @@ const Navbar = () => {
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
       }
+
+      // Only track sections on the home page
+      if (location.pathname === "/") {
+        const scrollPosition = window.scrollY;
+        
+        // Get all section elements
+        const sections = document.querySelectorAll("section[id]");
+        
+        // Find the current active section based on scroll position
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute("id") || "";
+          
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            setActiveSection(sectionId);
+          }
+        });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrolled]);
+  }, [scrolled, location.pathname]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -36,15 +59,24 @@ const Navbar = () => {
     : "bg-forest-700/90 backdrop-blur-sm";
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Products", path: "/products" },
-    { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", path: "/", section: "home" },
+    { name: "About", path: "/about", section: "about" },
+    { name: "Button Mushrooms", path: "/#button-mushrooms", section: "button-mushrooms" },
+    { name: "Products", path: "/products", section: "products" },
+    { name: "Blog", path: "/blog", section: "blog" },
+    { name: "Contact", path: "/contact", section: "contact" },
   ];
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
+  const isActive = (path: string, section?: string) => {
+    if (location.pathname !== "/" && path === location.pathname) {
+      return true;
+    }
+    
+    if (location.pathname === "/" && section && section === activeSection) {
+      return true;
+    }
+    
+    return false;
   };
 
   return (
@@ -67,7 +99,7 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(item.path)
+                    isActive(item.path, item.section)
                       ? "text-white bg-forest-600/70 font-semibold"
                       : "text-gray-200 hover:text-white hover:bg-forest-600/50"
                   }`}
@@ -109,7 +141,7 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               className={`block px-3 py-2 rounded-md text-base font-medium ${
-                isActive(item.path)
+                isActive(item.path, item.section)
                   ? "text-white bg-forest-600 font-semibold"
                   : "text-gray-200 hover:text-white hover:bg-forest-600/50"
               }`}

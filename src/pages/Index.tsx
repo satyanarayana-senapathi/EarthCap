@@ -7,17 +7,31 @@ import ProductsPreview from "@/components/home/ProductsPreview";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogPreview from "@/components/home/BlogPreview";
 import ContactPreview from "@/components/home/ContactPreview";
+import HeaderCarousel from "@/components/home/HeaderCarousel";
 
 const Index = () => {
   return (
     <PageLayout>
-      <HeroSection />
-      <AboutPreview />
-      <ButtonMushroomsPreview />
-      <ProductsPreview />
+      <section id="home">
+        <HeroSection />
+      </section>
+      <section id="about">
+        <AboutPreview />
+      </section>
+      <HeaderCarousel />
+      <section id="button-mushrooms">
+        <ButtonMushroomsPreview />
+      </section>
+      <section id="products">
+        <ProductsPreview />
+      </section>
       <TestimonialsSection />
-      <BlogPreview />
-      <ContactPreview />
+      <section id="blog">
+        <BlogPreview />
+      </section>
+      <section id="contact">
+        <ContactPreview />
+      </section>
     </PageLayout>
   );
 };
