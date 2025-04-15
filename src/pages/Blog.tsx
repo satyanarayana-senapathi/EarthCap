@@ -1,8 +1,9 @@
+
 import PageLayout from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge"; // Add this import
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -282,13 +283,18 @@ const Blog = () => {
                 ))}
               </div>
 
-              <Pagination>
+              <Pagination className="mt-8">
                 <PaginationContent>
-                  <PaginationPrevious
-                    href="#"
-                    onClick={() => paginate(currentPage - 1)}
-                    disabled={currentPage === 1}
-                  />
+                  <PaginationItem>
+                    <PaginationPrevious
+                      href="#" 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (currentPage > 1) paginate(currentPage - 1);
+                      }}
+                    />
+                  </PaginationItem>
+                  
                   {Array.from({
                     length: Math.ceil(filteredPosts.length / postsPerPage),
                   }).map((_, i) => {
@@ -301,10 +307,14 @@ const Blog = () => {
                         pageNumber <= currentPage + 1)
                     ) {
                       return (
-                        <PaginationItem key={pageNumber} active={currentPage === pageNumber}>
+                        <PaginationItem key={pageNumber}>
                           <PaginationLink
                             href="#"
-                            onClick={() => paginate(pageNumber)}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              paginate(pageNumber);
+                            }}
+                            isActive={currentPage === pageNumber}
                           >
                             {pageNumber}
                           </PaginationLink>
@@ -312,22 +322,25 @@ const Blog = () => {
                       );
                     } else if (
                       i === 1 ||
-                      i ===
-                        Math.ceil(filteredPosts.length / postsPerPage) - 2
+                      i === Math.ceil(filteredPosts.length / postsPerPage) - 2
                     ) {
                       return <PaginationEllipsis key={`ellipsis-${i}`} />;
                     } else {
                       return null;
                     }
                   })}
-                  <PaginationNext
-                    href="#"
-                    onClick={() => paginate(currentPage + 1)}
-                    disabled={
-                      currentPage ===
-                      Math.ceil(filteredPosts.length / postsPerPage)
-                    }
-                  />
+                  
+                  <PaginationItem>
+                    <PaginationNext 
+                      href="#" 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (currentPage < Math.ceil(filteredPosts.length / postsPerPage)) {
+                          paginate(currentPage + 1);
+                        }
+                      }} 
+                    />
+                  </PaginationItem>
                 </PaginationContent>
               </Pagination>
             </div>

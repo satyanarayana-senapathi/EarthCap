@@ -33,11 +33,16 @@ const PageLayout = ({ children }: PageLayoutProps) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
+  // Reset scroll position when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow pt-16">{children}</main>
       <Footer />
       
       {showScrollTop && (

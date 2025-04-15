@@ -30,8 +30,8 @@ const Navbar = () => {
         
         // Find the current active section based on scroll position
         sections.forEach((section) => {
-          const sectionTop = section.offsetTop - 100;
-          const sectionHeight = section.offsetHeight;
+          const sectionTop = (section as HTMLElement).offsetTop - 100;
+          const sectionHeight = (section as HTMLElement).offsetHeight;
           const sectionId = section.getAttribute("id") || "";
           
           if (
@@ -61,7 +61,6 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/", section: "home" },
     { name: "About", path: "/about", section: "about" },
-    { name: "Button Mushrooms", path: "/#button-mushrooms", section: "button-mushrooms" },
     { name: "Products", path: "/products", section: "products" },
     { name: "Blog", path: "/blog", section: "blog" },
     { name: "Contact", path: "/contact", section: "contact" },
@@ -77,6 +76,18 @@ const Navbar = () => {
     }
     
     return false;
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === "/") {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        window.scrollTo({
+          top: section.offsetTop - 80,
+          behavior: "smooth"
+        });
+      }
+    }
   };
 
   return (
@@ -98,6 +109,7 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.path}
+                  onClick={() => scrollToSection(item.section || "")}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive(item.path, item.section)
                       ? "text-white bg-forest-600/70 font-semibold"
@@ -140,6 +152,7 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
+              onClick={() => scrollToSection(item.section || "")}
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 isActive(item.path, item.section)
                   ? "text-white bg-forest-600 font-semibold"
