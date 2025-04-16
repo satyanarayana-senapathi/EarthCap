@@ -110,16 +110,20 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   onClick={() => scrollToSection(item.section || "")}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(item.path, item.section)
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 
+                    ${isActive(item.path, item.section)
                       ? "text-white bg-forest-600/70 font-semibold"
-                      : "text-gray-200 hover:text-white hover:bg-forest-600/50"
-                  }`}
+                      : "text-white/70 hover:text-white hover:bg-forest-600/50 hover:font-semibold"
+                    }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button variant="secondary" className="ml-4 bg-accent text-white hover:bg-accent/80" asChild>
+              <Button 
+                variant="secondary" 
+                className="ml-4 bg-accent text-white hover:bg-accent/80 hover:scale-105 transition-all" 
+                asChild
+              >
                 <Link to="/contact">Get in Touch</Link>
               </Button>
             </div>
@@ -153,16 +157,20 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               onClick={() => scrollToSection(item.section || "")}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
-                isActive(item.path, item.section)
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 
+                ${isActive(item.path, item.section)
                   ? "text-white bg-forest-600 font-semibold"
-                  : "text-gray-200 hover:text-white hover:bg-forest-600/50"
-              }`}
+                  : "text-white/70 hover:text-white hover:bg-forest-600/50 hover:font-semibold"
+                }`}
             >
               {item.name}
             </Link>
           ))}
-          <Button variant="secondary" className="w-full mt-2 bg-accent text-white hover:bg-accent/80" asChild>
+          <Button 
+            variant="secondary" 
+            className="w-full mt-2 bg-accent text-white hover:bg-accent/80 hover:scale-105 transition-all" 
+            asChild
+          >
             <Link to="/contact">Get in Touch</Link>
           </Button>
         </div>
@@ -172,3 +180,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
