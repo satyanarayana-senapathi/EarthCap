@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -21,14 +20,11 @@ const Navbar = () => {
         setScrolled(isScrolled);
       }
 
-      // Only track sections on the home page
       if (location.pathname === "/") {
         const scrollPosition = window.scrollY;
         
-        // Get all section elements
         const sections = document.querySelectorAll("section[id]");
         
-        // Find the current active section based on scroll position
         sections.forEach((section) => {
           const sectionTop = (section as HTMLElement).offsetTop - 100;
           const sectionHeight = (section as HTMLElement).offsetHeight;
@@ -110,10 +106,10 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   onClick={() => scrollToSection(item.section || "")}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 
+                  className={`h-16 px-3 flex items-center rounded-none text-sm font-medium transition-all duration-300 
                     ${isActive(item.path, item.section)
-                      ? "text-white bg-forest-600/70 font-semibold"
-                      : "text-white/70 hover:text-white hover:bg-forest-600/50 hover:font-semibold"
+                      ? "text-white bg-forest-600 font-semibold shadow-md"
+                      : "text-white hover:text-white hover:bg-forest-500 hover:font-semibold"
                     }`}
                 >
                   {item.name}
@@ -121,7 +117,7 @@ const Navbar = () => {
               ))}
               <Button 
                 variant="secondary" 
-                className="ml-4 bg-accent text-white hover:bg-accent/80 hover:scale-105 transition-all" 
+                className="ml-4 bg-accent text-white hover:bg-accent/90 hover:scale-105 transition-all shadow-md" 
                 asChild
               >
                 <Link to="/contact">Get in Touch</Link>
@@ -145,7 +141,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
       <div
         className={`${
           isOpen ? "block" : "hidden"
@@ -157,10 +152,10 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               onClick={() => scrollToSection(item.section || "")}
-              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 
+              className={`block w-full px-3 py-3 text-base font-medium transition-all duration-300 
                 ${isActive(item.path, item.section)
-                  ? "text-white bg-forest-600 font-semibold"
-                  : "text-white/70 hover:text-white hover:bg-forest-600/50 hover:font-semibold"
+                  ? "text-white bg-forest-600 font-semibold shadow-md"
+                  : "text-white hover:text-white hover:bg-forest-500 hover:font-semibold"
                 }`}
             >
               {item.name}
@@ -168,7 +163,7 @@ const Navbar = () => {
           ))}
           <Button 
             variant="secondary" 
-            className="w-full mt-2 bg-accent text-white hover:bg-accent/80 hover:scale-105 transition-all" 
+            className="w-full mt-2 bg-accent text-white hover:bg-accent/90 hover:scale-105 transition-all shadow-md" 
             asChild
           >
             <Link to="/contact">Get in Touch</Link>
@@ -180,4 +175,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
