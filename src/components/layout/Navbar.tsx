@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -93,7 +94,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0">
+            <Link to="/" className="flex-shrink-0 animate-fade-in">
               <span className="font-serif text-2xl font-bold text-white">
                 Nutricap<span className="text-accent">Mushrooms</span>
               </span>
@@ -109,15 +110,15 @@ const Navbar = () => {
                   className={`h-16 px-3 flex items-center rounded-none text-sm font-medium transition-all duration-300 
                     ${isActive(item.path, item.section)
                       ? "text-white bg-forest-600 font-semibold shadow-md"
-                      : "text-white hover:text-white hover:bg-forest-500 hover:font-semibold"
+                      : "text-white hover:text-white hover:bg-[#33C3F0] hover:font-semibold animate-fade-in"
                     }`}
                 >
                   {item.name}
                 </Link>
               ))}
               <Button 
-                variant="secondary" 
-                className="ml-4 bg-accent text-white hover:bg-accent/90 hover:scale-105 transition-all shadow-md" 
+                variant="outline" 
+                className="ml-4 border-2 border-forest-600 text-white hover:text-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md animate-fade-in" 
                 asChild
               >
                 <Link to="/contact">Get in Touch</Link>
@@ -127,14 +128,14 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-forest-600 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-[#33C3F0] focus:outline-none transition-all duration-300"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
+                <X className="block h-6 w-6 animate-fade-in" aria-hidden="true" />
               ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
+                <Menu className="block h-6 w-6 animate-fade-in" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -143,7 +144,7 @@ const Navbar = () => {
 
       <div
         className={`${
-          isOpen ? "block" : "hidden"
+          isOpen ? "block animate-fade-in" : "hidden"
         } md:hidden bg-forest-800 shadow-lg`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -155,15 +156,15 @@ const Navbar = () => {
               className={`block w-full px-3 py-3 text-base font-medium transition-all duration-300 
                 ${isActive(item.path, item.section)
                   ? "text-white bg-forest-600 font-semibold shadow-md"
-                  : "text-white hover:text-white hover:bg-forest-500 hover:font-semibold"
+                  : "text-white hover:text-white hover:bg-[#33C3F0] hover:font-semibold"
                 }`}
             >
               {item.name}
             </Link>
           ))}
           <Button 
-            variant="secondary" 
-            className="w-full mt-2 bg-accent text-white hover:bg-accent/90 hover:scale-105 transition-all shadow-md" 
+            variant="outline" 
+            className="w-full mt-2 border-2 border-forest-600 text-white hover:text-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md" 
             asChild
           >
             <Link to="/contact">Get in Touch</Link>
