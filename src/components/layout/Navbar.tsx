@@ -118,7 +118,7 @@ const Navbar = () => {
               ))}
               <Button 
                 variant="outline" 
-                className="ml-4 border-2 h-10 border-forest-600 text-black hover:text-white hover:bg-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md animate-fade-in" 
+                className="ml-4 border-2 h-10 border-forest-600 text-black hover:text-white hover:bg-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md animate-fade-in highlight-button" 
                 asChild
               >
                 <Link to="/contact">Get in Touch</Link>
@@ -164,7 +164,7 @@ const Navbar = () => {
           ))}
           <Button 
             variant="outline" 
-            className="w-full mt-2 h-10 border-2 border-forest-600 text-black hover:text-white hover:bg-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md" 
+            className="w-full mt-2 h-10 border-2 border-forest-600 text-black hover:text-white hover:bg-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md highlight-button" 
             asChild
           >
             <Link to="/contact">Get in Touch</Link>
