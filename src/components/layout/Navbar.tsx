@@ -107,10 +107,10 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   onClick={() => scrollToSection(item.section || "")}
-                  className={`h-16 px-3 flex items-center rounded-none text-sm font-medium transition-all duration-300 
+                  className={`h-10 px-3 flex items-center rounded-md text-sm font-medium transition-all duration-300 
                     ${isActive(item.path, item.section)
                       ? "text-white bg-forest-600 font-semibold shadow-md"
-                      : "text-white hover:text-white hover:bg-[#33C3F0] hover:font-semibold animate-fade-in"
+                      : "text-black hover:text-white hover:bg-[#33C3F0] hover:font-semibold animate-fade-in"
                     }`}
                 >
                   {item.name}
@@ -118,7 +118,7 @@ const Navbar = () => {
               ))}
               <Button 
                 variant="outline" 
-                className="ml-4 border-2 border-forest-600 text-white hover:text-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md animate-fade-in" 
+                className="ml-4 border-2 h-10 border-forest-600 text-black hover:text-white hover:bg-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md animate-fade-in" 
                 asChild
               >
                 <Link to="/contact">Get in Touch</Link>
@@ -153,10 +153,10 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               onClick={() => scrollToSection(item.section || "")}
-              className={`block w-full px-3 py-3 text-base font-medium transition-all duration-300 
+              className={`block w-full px-3 py-2 rounded-md text-base font-medium transition-all duration-300 
                 ${isActive(item.path, item.section)
                   ? "text-white bg-forest-600 font-semibold shadow-md"
-                  : "text-white hover:text-white hover:bg-[#33C3F0] hover:font-semibold"
+                  : "text-black hover:text-white hover:bg-[#33C3F0] hover:font-semibold"
                 }`}
             >
               {item.name}
@@ -164,7 +164,7 @@ const Navbar = () => {
           ))}
           <Button 
             variant="outline" 
-            className="w-full mt-2 border-2 border-forest-600 text-white hover:text-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md" 
+            className="w-full mt-2 h-10 border-2 border-forest-600 text-black hover:text-white hover:bg-accent transition-all duration-300 hover:border-accent bg-transparent shadow-md" 
             asChild
           >
             <Link to="/contact">Get in Touch</Link>
