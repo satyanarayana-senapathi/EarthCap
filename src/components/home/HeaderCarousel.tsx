@@ -82,7 +82,7 @@ const HeaderCarousel = () => {
           Our Farm Journey
         </h2>
         <p className="text-lg text-center text-forest-600 mb-10 max-w-3xl mx-auto">
-          Take a visual tour of Nutricap Mushrooms farm and discover our growing process
+          Take a visual tour of EarthCap Mushrooms farm and discover our growing process
         </p>
 
         <div className="relative">

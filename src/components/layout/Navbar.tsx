@@ -96,7 +96,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 animate-fade-in">
               <span className="font-serif text-2xl font-bold text-white">
-                Nutricap<span className="text-accent">Mushrooms</span>
+                EarthCap<span className="text-accent">Mushrooms</span>
               </span>
             </Link>
           </div>

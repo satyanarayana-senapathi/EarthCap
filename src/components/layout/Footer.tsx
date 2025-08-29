@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-serif font-semibold mb-4">Nutricap Mushrooms</h3>
+            <h3 className="text-xl font-serif font-semibold mb-4">EarthCap Mushrooms</h3>
             <p className="text-gray-300 mb-6">
               Premium mushroom cultivation with sustainable and organic farming practices.
             </p>
@@ -74,8 +74,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5 text-forest-400 shrink-0" />
-                <a href="mailto:info@nutricapmushrooms.com" className="text-gray-300 hover:text-white transition-colors">
-                  info@nutricapmushrooms.com
+                <a href="mailto:info@EarthCapmushrooms.com" className="text-gray-300 hover:text-white transition-colors">
+                  info@EarthCapmushrooms.com
                 </a>
               </li>
             </ul>
@@ -102,7 +102,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-12 pt-8">
           <p className="text-center text-gray-400">
-            &copy; {currentYear} Nutricap Mushrooms. All rights reserved.
+            &copy; {currentYear} EarthCap Mushrooms. All rights reserved.
           </p>
         </div>
       </div>
